@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bass学习 - 节奏听写</title>
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Bass学习</h1>
+      <nav class="main-nav">
+        <button class="nav-btn active" data-tab="dictation">节奏听写</button>
+        <button class="nav-btn" data-tab="variation">节奏变体</button>
+      </nav>
+    </header>
+    
+    <main>
+      <section id="section-dictation" class="exercise-area">
+        <div id="question-display" class="question-display">
+          <p class="hint">点击「新题目」开始练习</p>
+        </div>
+        
+        <div id="answer-display" class="answer-display hidden">
+        </div>
+
+        <div class="bpm-control">
+          <label for="bpm-slider">BPM: <span id="bpm-value">70</span></label>
+          <input type="range" id="bpm-slider" min="40" max="100" value="70">
+        </div>
+
+<div class="metronome-control">
+          <label class="metronome-label">
+            <input type="checkbox" id="metronome-checkbox" checked>
+            <span>节拍器</span>
+          </label>
+          <label class="metronome-label loop-label">
+            <input type="checkbox" id="loop-checkbox">
+            <span>循环播放</span>
+          </label>
+        </div>
+
+        <div class="sound-control">
+          <label for="sound-select">音源：</label>
+          <select id="sound-select">
+            <option value="0">钢琴 (Piano)</option>
+            <option value="33">电贝斯 (Electric Bass)</option>
+          </select>
+          <label class="octave-label">
+            <input type="checkbox" id="octave-checkbox">
+            <span>低八度</span>
+          </label>
+        </div>
+
+        <div class="volume-control">
+          <label class="volume-label">
+            节拍器音量: <input type="range" id="metronome-volume-slider" min="0" max="1" step="0.1" value="0.3">
+            <span id="metronome-volume-value">0.3</span>
+          </label>
+        </div>
+        
+        <p class="setting-hint">💡 修改配置后需点击「新题目」才会生效</p>
+
+        <div class="controls">
+          <button id="btn-play" class="btn btn-play" disabled>▶ 播放</button>
+          <button id="btn-show-answer" class="btn btn-show-answer" disabled>显示答案</button>
+          <button id="btn-new-question" class="btn btn-new-question">新题目</button>
+        </div>
+
+        <div class="pattern-config">
+          <div class="pattern-mode-toggle">
+            <label class="mode-label">
+              <input type="radio" name="pattern-mode" value="default" id="mode-default" checked>
+              <span>默认模式</span>
+            </label>
+            <label class="mode-label">
+              <input type="radio" name="pattern-mode" value="custom" id="mode-custom">
+              <span>自定义模式</span>
+            </label>
+          </div>
+          
+          <div class="pattern-list" id="pattern-list">
+          </div>
+        </div>
+      </section>
+
+      <section id="section-variation" class="exercise-area hidden">
+        <div id="original-display" class="original-display">
+          <div class="original-title">原始节奏</div>
+          <p class="hint">点击「新题目」生成</p>
+        </div>
+
+        <div class="controls">
+          <button id="btn-play-variation" class="btn btn-play" disabled>▶ 播放</button>
+          <button id="btn-show-answer-variation" class="btn btn-show-answer" disabled>显示答案</button>
+          <button id="btn-new-question-variation" class="btn btn-new-question">新题目</button>
+        </div>
+
+        <div id="variation-display" class="variation-display">
+          <p class="hint">点击「新题目」开始练习</p>
+        </div>
+
+        <div class="bpm-control">
+          <label for="bpm-slider-variation">BPM: <span id="bpm-value-variation">70</span></label>
+          <input type="range" id="bpm-slider-variation" min="40" max="100" value="70">
+        </div>
+
+        <div class="metronome-control">
+          <label class="metronome-label">
+            <input type="checkbox" id="metronome-checkbox-variation" checked>
+            <span>节拍器</span>
+          </label>
+          <label class="metronome-label loop-label">
+            <input type="checkbox" id="loop-checkbox-variation">
+            <span>循环播放</span>
+          </label>
+        </div>
+
+        <div class="sound-control">
+          <label for="sound-select-variation">音源：</label>
+          <select id="sound-select-variation">
+            <option value="0">钢琴 (Piano)</option>
+            <option value="33">电贝斯 (Electric Bass)</option>
+          </select>
+          <label class="octave-label">
+            <input type="checkbox" id="octave-checkbox-variation">
+            <span>低八度</span>
+          </label>
+        </div>
+
+        <div class="volume-control">
+          <label class="volume-label">
+            节拍器音量: <input type="range" id="metronome-volume-slider-variation" min="0" max="1" step="0.1" value="0.3">
+            <span id="metronome-volume-value-variation">0.3</span>
+          </label>
+        </div>
+
+        <div class="pattern-config">
+          <div class="pattern-mode-toggle">
+            <label class="mode-label">
+              <input type="radio" name="pattern-mode-variation" value="default" id="mode-default-variation" checked>
+              <span>默认模式</span>
+            </label>
+            <label class="mode-label">
+              <input type="radio" name="pattern-mode-variation" value="custom" id="mode-custom-variation">
+              <span>自定义模式</span>
+            </label>
+          </div>
+          
+          <div class="pattern-list" id="pattern-list-variation">
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
