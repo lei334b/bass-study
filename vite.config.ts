@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import path from 'path'
 
 export default defineConfig({
   base: './',
@@ -8,7 +9,7 @@ export default defineConfig({
     open: false,
     fs: {
       strict: true,
-      allow: []
+      allow: [path.resolve(__dirname)]
     }
   }
 })
